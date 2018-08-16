@@ -1,6 +1,6 @@
-class CreateRedactor3Assets < ActiveRecord::Migration
+class CreateRedactorAssets < ActiveRecord::Migration
   def self.up
-    create_table :redactor3_assets do |t|
+    create_table :redactor_assets do |t|
       # Change column name and override Redactor3Rails.devise_user_key
       t.integer :user_id
 
@@ -19,11 +19,11 @@ class CreateRedactor3Assets < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index 'redactor3_assets', ['assetable_type', 'type', 'assetable_id'], :name => 'idx_redactor3_assetable_type'
-    add_index 'redactor3_assets', ['assetable_type', 'assetable_id'], :name => 'idx_redactor3_assetable'
+    add_index 'redactor_assets', ['assetable_type', 'type', 'assetable_id'], :name => 'idx_redactor_assetable_type'
+    add_index 'redactor_assets', ['assetable_type', 'assetable_id'], :name => 'idx_redactor_assetable'
   end
 
   def self.down
-    drop_table :redactor3_assets
+    drop_table :redactor_assets
   end
 end

@@ -148,11 +148,11 @@ Create a new Migration: `rails g rename_user_id_to_new_user_id`
 
     class RenameUserIdToNewUserId < ActiveRecord::Migration
       def up
-        rename_column :redactor3_assets, :user_id, :admin_user_id
+        rename_column :redactor_assets, :user_id, :admin_user_id
       end
 
       def down
-        rename_column :redactor3_assets, :admin_user_id, :user_id
+        rename_column :redactor_assets, :admin_user_id, :user_id
       end
     end
 

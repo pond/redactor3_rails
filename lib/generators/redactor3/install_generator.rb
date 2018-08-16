@@ -41,9 +41,9 @@ module Redactor3
       def create_migrations
         if orm.to_s == "active_record"
           if ARGV.include?('--devise')
-            migration_template "#{generator_dir}/devise_migration.rb", File.join('db/migrate', 'create_redactor3_assets.rb')
+            migration_template "#{generator_dir}/devise_migration.rb", File.join('db/migrate', 'create_redactor_assets.rb')
           else
-            migration_template "#{generator_dir}/migration.rb", File.join('db/migrate', 'create_redactor3_assets.rb')
+            migration_template "#{generator_dir}/migration.rb", File.join('db/migrate', 'create_redactor_assets.rb')
           end
         end
       end

@@ -12,7 +12,7 @@ module Redactor3Rails
         module ClassMethods
           def self.extended(base)
             base.class_eval do
-              store_in :collection => 'redactor3_assets'
+              store_in :collection => 'redactor_assets'
 
               belongs_to :assetable, :polymorphic => true
 

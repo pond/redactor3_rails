@@ -21,18 +21,12 @@ module Redactor3Rails
   @@images_file_types = ['jpg', 'jpeg', 'png', 'gif', 'tiff']
   @@files_file_types = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'rtf', 'txt']
 
-
-  def self.image_model
-    Redactor3Rails::Image
-  end
-
-  def self.file_model
-    Redactor3Rails::File
-  end
-
-  def self.devise_user
-    :user
-  end
+  mattr_accessor :image_model, :file_model, :devise_user, :image_uploader, :file_uploader
+  @@image_model = Redactor3Rails::Image
+  @@file_model = Redactor3Rails::File
+  @@devise_user = :user
+  @@file_uploader = Redactor3RailsFileUploader
+  @@image_uploader = Redactor3RailsImageUploader
 
   def self.devise_user_key
     "#{self.devise_user.to_s}_id".to_sym
