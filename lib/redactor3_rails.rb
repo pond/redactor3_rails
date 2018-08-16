@@ -21,14 +21,53 @@ module Redactor3Rails
   @@images_file_types = ['jpg', 'jpeg', 'png', 'gif', 'tiff']
   @@files_file_types = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'rtf', 'txt']
 
-  mattr_accessor :image_model, :file_model, :devise_user, :image_uploader, :file_uploader
-  @@image_model = Redactor3Rails::Image
-  @@file_model = Redactor3Rails::File
-  @@devise_user = :user
-  @@file_uploader = Redactor3RailsFileUploader
-  @@image_uploader = Redactor3RailsImageUploader
+  class << self
+    def image_model=(v)
+      @image_model = v
+    end
 
-  def self.devise_user_key
-    "#{self.devise_user.to_s}_id".to_sym
+    def image_model
+      @image_model ||= Redactor3Rails::Image
+    end
+
+    def file_model=(v)
+      @file_model = v
+    end
+
+    def file_model
+      @file_model ||= Redactor3Rails::File
+    end
+
+    def image_uploader=(v)
+      @image_uploader = v
+    end
+
+    def image_uploader
+      @image_uploader ||= Redactor3RailsImageUploader
+    end
+
+    def file_uploader=(v)
+      @file_uploader = v
+    end
+
+    def file_uploader
+      @file_uploader ||= Redactor3RailsFileUploader
+    end
+
+    def devise_user=(v)
+      @devise_user = v
+    end
+
+    def devise_user
+      @devise_user ||= :user
+    end
+
+    def devise_user_key=(v)
+      @devise_user_key = v
+    end
+
+    def devise_user_key
+      @devise_user_key ||= "#{self.devise_user.to_s}_id".to_sym
+    end
   end
 end
