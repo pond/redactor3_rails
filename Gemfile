@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in redactor2_rails.gemspec
+# Specify your gem's dependencies in redactor3_rails.gemspec
 gemspec
 gem 'rails', '>= 3.2'
 
