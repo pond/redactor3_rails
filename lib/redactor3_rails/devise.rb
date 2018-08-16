@@ -1,5 +1,8 @@
 module Redactor3Rails
   module Devise
+
+    private
+
     def redactor3_authenticate_user!
       authenticate_user!
     end

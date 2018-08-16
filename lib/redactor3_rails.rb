@@ -22,6 +22,14 @@ module Redactor3Rails
   @@files_file_types = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'rtf', 'txt']
 
   class << self
+    def base_controller=(v)
+      @base_controller = v
+    end
+
+    def base_controller
+      @base_controller ||= ApplicationController
+    end
+
     def image_model=(v)
       @image_model = v
     end

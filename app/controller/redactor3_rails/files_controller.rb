@@ -1,5 +1,6 @@
-class Redactor3Rails::FilesController < ApplicationController
-  before_filter :redactor3_authenticate_user!
+class Redactor3Rails::FilesController < Redactor3Rails.base_controller
+  include ActionView::Helpers::NumberHelper
+  before_action :redactor3_authenticate_user!
 
   def create
     json = {}
@@ -26,7 +27,7 @@ class Redactor3Rails::FilesController < ApplicationController
   end
 
   def index
-    json = Redactor3Rails.file_model.order('id DESC').map do |file|
+    json = Redactor3Rails.file_model.where(user_id: redactor3_current_user.id).order('id DESC').map do |file|
       {
         title: file.custom_file_name,
         size: number_to_human_size(file.data_file_size),
@@ -35,13 +36,5 @@ class Redactor3Rails::FilesController < ApplicationController
       }
     end
     render json: json
-  end
-
-  private
-
-  def redactor3_authenticate_user!
-    if Redactor3Rails.file_model.new.has_attribute?(Redactor3Rails.devise_user)
-      super
-    end
   end
 end
