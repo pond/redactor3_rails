@@ -1,5 +1,6 @@
 class Redactor3Rails::FilesController < Redactor3Rails.base_controller
   include ActionView::Helpers::NumberHelper
+  skip_before_action :verify_authenticity_token
   before_action :redactor3_authenticate_user!
 
   def create
