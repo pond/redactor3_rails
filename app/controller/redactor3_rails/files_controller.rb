@@ -16,7 +16,7 @@ class Redactor3Rails::FilesController < Redactor3Rails.base_controller
       @file.custom_file_name = file.original_filename
 
       if @file.save
-        json["file-#{i}"] = { id: @file.id, url: @file.url, name: @file.filename, size: number_to_human_size(@file.data_file_size) }
+        json["file-#{i}"] = { id: @file.id, url: @file.url, name: @file.custom_file_name || @file.filename, size: number_to_human_size(@file.data_file_size) }
       else
         error = @file.errors
       end
