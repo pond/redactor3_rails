@@ -1,15 +1,21 @@
-$(function () {
-    // Pass authenticity_token
-    var params = '[name="authenticity_token"]';
+$(document).on('ready page:load', function() {
+
+    var csrf_token = $('meta[name=csrf-token]').attr('content');
+    var csrf_param = $('meta[name=csrf-param]').attr('content');
+    var params;
+
+    if (csrf_param !== undefined && csrf_token !== undefined)
+    {
+        params = csrf_param + "=" + encodeURIComponent(csrf_token);
+    }
+
     // Set global settings
-    $.Redactor.settings = {
+    $R.options = {
         //plugins: ['source', 'fullscreen', 'textdirection', 'clips'],
-        imageUpload: '/redactor3_rails/images',
+        imageUpload:      '/redactor3_rails/images?' + params,
         imageManagerJson: '/redactor3_rails/images',
-        imageUploadFields: params,
-        fileUpload: '/redactor3_rails/files',
-        fileManagerJson: '/redactor3_rails/files',
-        fileUploadFields: params
+        fileUpload:       '/redactor3_rails/files?' + params,
+        fileManagerJson:  '/redactor3_rails/files'
     };
     // Initialize Redactor
     $('.redactor').redactor();
